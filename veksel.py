@@ -1,46 +1,42 @@
 """
-Inputs:
-Pris og innbetalt beløp 
+veksel.py  -  Meny 2: Vekselautomat
 
-Output:
-Totalt beløp tilbake 
-Antall av hver seddel og mynt som gis tilbake 
+Input:  varer (navn og pris) og betalt beløp
+Output: total veksel og antall av hver seddel og mynt
+
+Formler:
+    veksel         = betalt - sum av prisene
+    antall av enhet = veksel // verdi   (størst enhet først)
+    resten          = veksel % verdi    (går videre til neste enhet)
+
+Forutsetninger:
+    - Veksel rundes til hele kroner (minste mynt er 1 kr).
+    - Det gis tilbake færrest mulig sedler og mynter.
 """
 
 from felles import skriv_overskrift, les_tall, les_ja_nei, formater_kr
 
+ENHETER = [
+    (1000, "tusenlapp"), (500, "femhundrelapp"), (200, "tohundrelapp"),
+    (100, "hundrelapp"), (50, "femtilapp"), (20, "tjuekrone"),
+    (10, "tikrone"), (5, "femkrone"), (1, "enkrone")
+]
+
 def beregn_veksel(veksel_kr):
+    # Deler veksel på seddel- og myntverdier, størst først
+    veksel = round(veksel_kr)  # Minste mynt er 1 kr, så vi runder til hele kroner
+    resultat = []
 
-    veksel = round(veksel_kr)
+    for enhet in ENHETER:
+        antall = veksel // enhet[0]
+        veksel %= enhet[0]
+        resultat.append([enhet[0], enhet[1], antall])
 
-    tusen_lapper = veksel // 1000
-    veksel %= 1000
-
-    femhundre_lapper = veksel // 500
-    veksel %= 500
-
-    tohundre_lapper = veksel // 200
-    veksel %= 200
-
-    hundre_lapper = veksel // 100
-    veksel %= 100
-
-    femti_lapper = veksel // 50
-    veksel %= 50
-
-    tjue_kroner = veksel // 20
-    veksel %= 20
-
-    ti_kroner = veksel // 10
-    veksel %= 10
-
-    fem_kroner = veksel // 5
-    en_kroner = veksel % 5
-
-    return [tusen_lapper, femhundre_lapper, tohundre_lapper, hundre_lapper,
-            femti_lapper, tjue_kroner, ti_kroner, fem_kroner, en_kroner]
+    # Returnerer en liste med [verdi, navn, antall] for hver enhet
+    return resultat
 
 def les_varer():
+    # Leser inn varer til brukeren er ferdig. Hver vare lagres som [navn, pris]
     varer = []
     while True:
 
@@ -54,6 +50,7 @@ def les_varer():
 
 
 def vis_resultat(varer, betalt, veksel_kr, resultat):
+    # Skriver ut varene, betalt beløp, veksel og antall av hver seddel og mynt
     skriv_overskrift("Resultat - vekselautomat")
     for vare in varer:
         print(vare[0] + ":", formater_kr(vare[1]))
@@ -62,15 +59,8 @@ def vis_resultat(varer, betalt, veksel_kr, resultat):
     print("Veksel:", formater_kr(veksel_kr))
     print()
 
-    print(resultat[0], "x tusenlapp")
-    print(resultat[1], "x femhundrelapp")
-    print(resultat[2], "x tohundrelapp")
-    print(resultat[3], "x hundrelapp")
-    print(resultat[4], "x femtilapp")
-    print(resultat[5], "x tjuekrone")
-    print(resultat[6], "x tikrone")
-    print(resultat[7], "x femkrone")
-    print(resultat[8], "x enkrone")
+    for enhet in resultat:
+        print(enhet[2], "x", enhet[1])
 
 def kjor_vekselautomat():
     skriv_overskrift("Vekselautomat")
