@@ -49,7 +49,7 @@ def formater_kr(belop):
 
 def formater_prosent(prosent, desimaler=2):
     # Eksempel: 10.5 -> 10,50 %
-    prosent = round(prosent, desimaler=2)
+    prosent = round(prosent, desimaler)
     if prosent == 0:
         prosent = 0.0
     tekst = f"{prosent:.{desimaler}f}".replace(".", ",")
