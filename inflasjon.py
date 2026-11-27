@@ -32,13 +32,10 @@ def les_inflasjon():
 
     inflasjoner = []
     if les_ja_nei("Er inflasjonen lik hvert år? (j/n): "):
-        # Ja: samme inflasjon brukes for alle årene
         inflasjon = les_tall("Skriv inflasjon per år i %: ", minimum=MIN_INFLASJON, maksimum=MAKS_INFLASJON)
         for aar in range(antall_aar):
             inflasjoner.append(inflasjon)
     else:
-        # Nei: brukeren skriver inn inflasjonen for hvert år
-        # Starter på 1 slik at brukeren ser "år 1", "år 2" osv. i stedet for "år 0"
         for aar in range(1, antall_aar + 1):
             inflasjon = les_tall("Skriv inflasjon for år " + str(aar) + " i %: ",
                                  minimum=MIN_INFLASJON, maksimum=MAKS_INFLASJON)
