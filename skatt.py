@@ -19,7 +19,7 @@ Slik regnes skatten:
    (ingen avgift under 99 650 kr, og maks 25 % av det som er over grensen)
 """
 
-from felles import skriv_overskrift, les_tall, formater_kr, formater_prosent
+from felles import skriv_overskrift, les_tall, formater_kr, formater_prosent, MAKS_BELOP
 
 # Skattesatser 2026
 SKATT_ALMINNELIG_PROSENT = 22
