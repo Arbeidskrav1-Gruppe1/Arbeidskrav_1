@@ -14,7 +14,7 @@ Forutsetninger:
     - Det gis tilbake færrest mulig sedler og mynter.
 """
 
-from felles import skriv_overskrift, les_tall, les_ja_nei, formater_kr
+from felles import skriv_overskrift, les_tall, les_ja_nei, formater_kr, MAKS_BELOP
 
 ENHETER = [
     (1000, "tusenlapp"), (500, "femhundrelapp"), (200, "tohundrelapp"),
@@ -41,7 +41,7 @@ def les_varer():
     while True:
 
         navn = input("Skriv navn på varen: ")
-        pris = les_tall("Pris: ", minimum=0)
+        pris = les_tall("Pris: ", minimum=0, maksimum=MAKS_BELOP) # Grense for å stoppe tulle input
         varer.append([navn, pris])
         print()
         if not les_ja_nei("Vil du legge til en vare til? (j/n): "):
@@ -69,9 +69,10 @@ def kjor_vekselautomat():
     total = 0
     for vare in varer:
         total = total + vare[1]
+    total = round(total, 2)
     print()
     print("Totalpris:", formater_kr(total))
 
-    betalt = les_tall("Hvor mye betaler du med: ", minimum=total)
+    betalt = les_tall("Hvor mye betaler du med: ", minimum=total, maksimum=total + MAKS_BELOP)
     veksel_kr = betalt - total
     vis_resultat(varer, betalt, veksel_kr, beregn_veksel(veksel_kr))
