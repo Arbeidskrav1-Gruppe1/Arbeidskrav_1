@@ -12,7 +12,7 @@ Formler:
     mva        = inkl. mva - ekskl. mva
 """
 
-from felles import skriv_overskrift, les_tall, les_heltall, les_ja_nei, formater_kr
+from felles import skriv_overskrift, les_tall, les_heltall, les_ja_nei, formater_kr, MAKS_BELOP
 
 # De fire momssatsene oppgaven krever (i prosent)
 MVA_SATSER = [25, 15, 12, 0]
