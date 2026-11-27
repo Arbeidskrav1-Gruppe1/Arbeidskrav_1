@@ -187,7 +187,7 @@ mva        = inkl. mva - ekskl. mva
 
 - **Input:** pris og innbetalt beløp
 - **Output:** totalt beløp tilbake og antall av hver seddel og mynt
-- **Valg:** regner i hele øre (heltall) for å unngå avrundingsfeil med desimaltall. Vekselen rundes av til hele kroner, siden Norge ikke har øremynter.
+- **Valg:** Vekselen rundes av til hele kroner, siden Norge ikke har øremynter.
 </details>
 
 <details>
@@ -210,7 +210,7 @@ mva        = inkl. mva - ekskl. mva
 <details>
 <summary><b>5. Lønnskalkulator</b></summary>
 
-- **Input:** timelønn, timer per uke, overtidstimer per uke, overtidstillegg og skatteprosent
+- **Input:** timelønn, timer per uke, overtidstimer per måned, overtidstillegg og skatteprosent
 - **Output:** ordinær lønn, overtid, brutto, skattetrekk og netto, per måned og per år
 - **Forutsetninger:** fast skatteprosent, 52 uker og 12 måneder, ingen feriepenger eller bonus
 - **Valg:** overtidstimer tolkes som timer *per uke*, på samme måte som ordinære timer
@@ -293,8 +293,8 @@ MVA PER SATS
 - [x] Felles hjelpefunksjoner (`felles.py`)
 - [x] Momskalkulator
 - [x] Vekselautomat
-- [ ] Inflasjonskalkulator
-- [ ] Sparekalkulator
+- [x] Inflasjonskalkulator
+- [x] Sparekalkulator
 - [x] Lønnskalkulator
 - [x] Budsjett og personlig økonomi
 - [x] Skattekalkulator
@@ -308,7 +308,7 @@ MVA PER SATS
 |---|---|
 | *Erik Schieldrop* | *Struktur for kodebasen, main.py, felles.py, moms.py, budsjett.py og skatt.py* |
 | *Sondre Ludvigsen* | *veksel.py, lonn.py og pensjon.py* |
-| *Sondre Skamfer* | *inflasjon.py og spare.py* |
+| *Sondre Skamfer* | *inflasjon.py og sparing.py* |
 
 **Emne:** Programmering, Fagskolen Innlandet
 **Oppgave:** Arbeidskrav 1, Del 2
