@@ -14,7 +14,7 @@ Forutsetninger (fra oppgaven):
       og at 10-20 % av inntekten bør spares
 """
 
-from felles import skriv_overskrift, les_tall, formater_kr, formater_prosent
+from felles import skriv_overskrift, les_tall, formater_kr, formater_prosent, MAKS_BELOP
 
 # De forhåndsdefinerte kategoriene brukeren fyller ut
 KATEGORIER = [
